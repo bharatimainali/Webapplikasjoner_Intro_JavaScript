@@ -1,0 +1,55 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  #main {
+    max-width: 400px;
+    margin: 2rem auto;
+  }
+  
+  #numbers,
+  #guess {
+    display: flex;
+    list-style: none;
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+  
+  #numbers li,
+  #guess li {
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+  }
+  
+  #numbers li {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: #333;
+    font-size: 0.9rem;
+  }
+  
+  #guess li input {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+  }
+  
+  button {
+    border: none;
+    padding: 0.6rem 1rem;
+    background: green;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    min-width: 300px;
+  }
+  
