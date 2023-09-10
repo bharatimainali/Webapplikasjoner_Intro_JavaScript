@@ -1,6 +1,7 @@
 const words = ["apple", "banana", "cherry", "grape", "orange"];
 let currentWordIndex = 0;
 let errors = 0;
+let typedWord = "";
 
 const wordElement = document.getElementById("word");
 const letterElement = document.getElementById("letter");
@@ -13,7 +14,7 @@ document.addEventListener("keyup", checkLetter);
 function startGame() {
   currentWordIndex = 0;
   errors = 0;
-  wordElement.className = ""; // Remove the green class
+  typedWord = "";
   updateUI();
   startButton.disabled = true;
 }
@@ -28,13 +29,15 @@ function checkLetter(event) {
   const currentWord = words[currentWordIndex];
   const typedLetter = event.key;
 
-  if (currentWord.indexOf(typedLetter) === 0) {
-    letterElement.textContent = `Bokstaven du skrev kommer her: ${typedLetter}`;
-    if (typedLetter === currentWord[currentWord.length - 1]) {
-      nextWord();
-    }
-  } else {
+  typedWord += typedLetter;
+  letterElement.textContent = `Bokstaven du skrev kommer her: ${typedWord}`;
+
+  if (typedWord === currentWord) {
+    typedWord = "";
+    nextWord();
+  } else if (currentWord.indexOf(typedWord) !== 0) {
     errors++;
+    typedWord = "";
     wrongsElement.textContent = `Antall feil: ${errors}`;
   }
 }
@@ -45,7 +48,6 @@ function nextWord() {
     updateUI();
   } else {
     wordElement.textContent = "Spillet er ferdig!";
-    wordElement.className = "green"; // Add this line
     letterElement.textContent = "";
     startButton.disabled = false;
   }
